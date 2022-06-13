@@ -4,6 +4,18 @@ import "./ShowCrimes.css";
 import useSupercluster from "use-supercluster";
 import { ImageOverlay, Marker, Popup, Tooltip, useMap } from "react-leaflet";
 
+const iconsPositions = [
+  [40.72961724449847, -74.29470062255861],
+  [40.77822489268387, -74.30809020996095],
+  [40.778744568500976, -74.16732788085939],
+  [40.74287726006463, -74.19788360595705],
+  [40.77120873129293, -74.20303344726564],
+  [40.75847405923122, -74.24629211425783],
+  [40.75587484676188, -74.1570281982422],
+  [40.75145595233487, -74.15771484375001],
+  [40.746516840425414, -74.15325164794923],
+];
+
 const icons = {};
 const fetchIcon = (count, size) => {
   if (!icons[count]) {
@@ -21,10 +33,6 @@ const cuffs = new L.Icon({
   iconSize: [25, 25],
 });
 
-var imageUrl = "https://maps.lib.utexas.edu/maps/historical/newark_nj_1922.jpg";
-// var errorOverlayUrl = "https://cdn-icons-png.flaticon.com/512/110/110686.png";
-// var altText =
-//   "Image of Newark, N.J. in 1922. Source: The University of Texas at Austin, UT Libraries Map Collection.";
 var latLngBounds = L.latLngBounds([
   [40.799311, -74.118464],
   [40.68202047785919, -74.33],
@@ -140,33 +148,42 @@ function ShowCrimes({ data }) {
 
       {/* <Rectangle bounds={latLngBounds} /> */}
       <ImageOverlay
-        url={imageUrl}
+        url="/overlay.jpg"
         bounds={latLngBounds}
         interactive={true}
-        bubblingMouseEvents={false}
+        // bubblingMouseEvents={false}
         eventHandlers={{
-          click: () => {
-            console.log("Image got clicked!");
+          click: (e) => {
+            console.log("Image got clicked!", e);
           },
-          mouseover: (e) => {
-            console.log("salam", e);
-          },
+          //   mouseover: (e) => {
+          //     console.log("salam", e);
+          //   },
         }}
       >
-        {/* <Marker position={[40.775626312669885, -74.11926269531251]}> */}
-        {/* <Popup>Salam</Popup>
-        <Tooltip permanent opacity={1}>
-          <div
-            style={{
-              zIndex: "10000000",
-              border: "1px solid red",
-            }}
-          >
-            <h1>salam</h1>
-          </div>
-        </Tooltip> */}
+        {iconsPositions.map((position, index) => (
+          <Marker
+            icon={L.divIcon({
+              className: "div-icon",
+              html: `<div> <span class="result-status"></span>$${
+                index + 1
+              }0${index}K</div>`,
+              iconAnchor: [37, 45],
+            })}
+            position={position}
+          />
+        ))}
 
-        {/* </Marker> */}
+        <Marker
+          icon={L.divIcon({
+            className: "div-icon",
+            html: `<div> <span class="result-status"></span>$504K</div>`,
+            iconAnchor: [37, 45],
+          })}
+          position={[40.775626312669885, -74.11926269531251]}
+        ></Marker>
+
+        <Popup autoClose={false}>Salam</Popup>
       </ImageOverlay>
     </>
   );
