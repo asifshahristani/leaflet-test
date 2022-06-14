@@ -10,10 +10,7 @@ const PopupContent = () => {
       <div className="custom-popup-content">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus
         assumenda debitis explicabo pariatur, at vero. Tempore quia ducimus
-        magnam impedit deleniti cupiditate, optio sunt Lorem ipsum dolor sit
-        amet consectetur adipisicing elit. Eveniet atque tenetur, et beatae
-        blanditiis esse placeat odio error tempore, assumenda numquam nulla
-        autem iure dolore aliquam necessitatibus non dolores vel!
+        magnam impedit deleniti cupiditate, optio sunt
       </div>
     </div>
   );
