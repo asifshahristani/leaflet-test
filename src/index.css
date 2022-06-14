@@ -59,3 +59,56 @@ div.div-icon:hover .result-status {
     transition: border-color .15s;
     box-sizing: border-box;
 }
+
+.marker-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 80px;
+  border-radius: 5px;
+}
+
+.popup-custom .leaflet-popup-tip-container {
+  display: none;
+}
+
+.popup-custom {
+  margin: 1rem;
+  height: 17.5rem;
+  width: 15rem;
+  padding: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.leaflet-popup-content {
+  margin: 0;  
+}
+
+.custom-popup-content-thumbnail {
+  height: 8rem;
+  width: 15rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.custom-popup-content-thumbnail img {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.custom-popup-content {
+  padding: 0.5rem 0.8rem;
+  text-align: justify;
+  height: 8rem;
+  overflow-y: auto;
+}

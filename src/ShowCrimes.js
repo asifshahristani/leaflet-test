@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import L from "leaflet";
 import "./ShowCrimes.css";
 import useSupercluster from "use-supercluster";
-import { ImageOverlay, Marker, Popup, Tooltip, useMap } from "react-leaflet";
+import { ImageOverlay, Marker, Popup, useMap } from "react-leaflet";
+import PopupContent from "./PopupContent";
 
 const iconsPositions = [
   [40.72961724449847, -74.29470062255861],
@@ -44,34 +45,34 @@ function ShowCrimes({ data }) {
   const [zoom, setZoom] = useState(12);
   const map = useMap();
 
-  useEffect(() => {
-    // L.rectangle(latLngBounds).addTo(map);
-    map.fitBounds(latLngBounds);
-  }, [map]);
+  // useEffect(() => {
+  // L.rectangle(latLngBounds).addTo(map);
+  //   map.fitBounds(latLngBounds);
+  // }, [map]);
 
   // get map bounds
-  const updateMap = useCallback(
-    function updateMap() {
-      console.log("updating");
-      const b = map.getBounds();
-      setBounds([
-        b.getSouthWest().lng,
-        b.getSouthWest().lat,
-        b.getNorthEast().lng,
-        b.getNorthEast().lat,
-      ]);
-      setZoom(map.getZoom());
-    },
-    [map]
-  );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function updateMap() {
+    console.log("updating");
+    const b = map.getBounds();
+    setBounds([
+      b.getSouthWest().lng,
+      b.getSouthWest().lat,
+      b.getNorthEast().lng,
+      b.getNorthEast().lat,
+    ]);
+    setZoom(map.getZoom());
+  }
 
   const onMove = useCallback(() => {
     updateMap();
-  }, [updateMap]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     updateMap();
-  }, [map, updateMap]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map]);
 
   useEffect(() => {
     map.on("move", onMove);
@@ -163,27 +164,35 @@ function ShowCrimes({ data }) {
       >
         {iconsPositions.map((position, index) => (
           <Marker
+            key={position[0]}
             icon={L.divIcon({
               className: "div-icon",
               html: `<div> <span class="result-status"></span>$${
                 index + 1
               }0${index}K</div>`,
               iconAnchor: [37, 45],
+              popupAnchor: [165, 140],
             })}
             position={position}
-          />
+          >
+            {/* <Popup closeButton={false} className="popup-custom">
+              <PopupContent />
+            </Popup> */}
+          </Marker>
         ))}
-
         <Marker
           icon={L.divIcon({
             className: "div-icon",
             html: `<div> <span class="result-status"></span>$504K</div>`,
             iconAnchor: [37, 45],
+            popupAnchor: [150, 140],
           })}
           position={[40.775626312669885, -74.11926269531251]}
-        ></Marker>
-
-        <Popup autoClose={false}>Salam</Popup>
+        >
+          <Popup className="popup-custom" maxHeight={500} maxWidth={300}>
+            <PopupContent />
+          </Popup>
+        </Marker>
       </ImageOverlay>
     </>
   );

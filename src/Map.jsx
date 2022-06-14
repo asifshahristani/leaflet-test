@@ -19,7 +19,7 @@ const Map = () => {
   console.log(data);
 
   return (
-    <MapContainer center={[52.6376, -1.135171]} zoom={4}>
+    <MapContainer center={[40.799311, -74.118464]} zoom={8}>
       <LayersControl position="topright">
         <LayersControl.BaseLayer name="Open Street Map">
           <TileLayer
