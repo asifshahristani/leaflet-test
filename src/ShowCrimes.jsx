@@ -42,13 +42,9 @@ var latLngBounds = L.latLngBounds([
 function ShowCrimes({ data }) {
   const maxZoom = 22;
   const [bounds, setBounds] = useState(null);
+  const [iconLocations, setIconLocations] = useState([]);
   const [zoom, setZoom] = useState(12);
   const map = useMap();
-
-  // useEffect(() => {
-  // L.rectangle(latLngBounds).addTo(map);
-  //   map.fitBounds(latLngBounds);
-  // }, [map]);
 
   // get map bounds
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -156,6 +152,10 @@ function ShowCrimes({ data }) {
         eventHandlers={{
           click: (e) => {
             console.log("Image got clicked!", e);
+            const point = [e.latlng.lat, e.latlng.lng];
+            const newLocations = [...iconLocations];
+            newLocations.push(point);
+            setIconLocations(newLocations);
           },
           //   mouseover: (e) => {
           //     console.log("salam", e);
@@ -171,15 +171,35 @@ function ShowCrimes({ data }) {
                 index + 1
               }0${index}K</div>`,
               iconAnchor: [37, 45],
-              popupAnchor: [165, 140],
+              popupAnchor: [150, 140],
             })}
             position={position}
           >
-            {/* <Popup closeButton={false} className="popup-custom">
+            <Popup className="popup-custom" maxHeight={500} maxWidth={300}>
               <PopupContent />
-            </Popup> */}
+            </Popup>
           </Marker>
         ))}
+
+        {iconLocations.map((position, index) => (
+          <Marker
+            key={position[0]}
+            icon={L.divIcon({
+              className: "div-icon",
+              html: `<div> <span class="result-status"></span>$${
+                index + 1
+              }0${index}K</div>`,
+              iconAnchor: [37, 45],
+              popupAnchor: [150, 140],
+            })}
+            position={position}
+          >
+            <Popup className="popup-custom" maxHeight={500} maxWidth={300}>
+              <PopupContent />
+            </Popup>
+          </Marker>
+        ))}
+
         <Marker
           icon={L.divIcon({
             className: "div-icon",

@@ -20,6 +20,7 @@
     "react-leaflet": "^4.0.0",
     "react-leaflet-google-layer": "^2.0.6",
     "react-query": "^3.39.1",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "supercluster": "^7.1.5",
     "use-supercluster": "^0.4.0",
