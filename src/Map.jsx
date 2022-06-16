@@ -30,14 +30,14 @@ const Map = () => {
 
         <LayersControl.BaseLayer checked name="Google Map">
           <ReactLeafletGoogleLayer
-            apiKey="AIzaSyA73nHO_3GrXOlsSU3PecgsGDAnscV6Ouc"
+            apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
             type={"satellite"}
           />
         </LayersControl.BaseLayer>
 
         <LayersControl.BaseLayer checked name="Google Map Hybrid">
           <ReactLeafletGoogleLayer
-            apiKey="AIzaSyA73nHO_3GrXOlsSU3PecgsGDAnscV6Ouc"
+            apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
             type={"hybrid"}
           />
         </LayersControl.BaseLayer>

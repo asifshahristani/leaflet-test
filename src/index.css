@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -25,16 +25,16 @@ div.div-icon {
   /* border: 0.5px solid #ededed; */
   border-radius: 50px;
   /* height: 30px !important;*/
-  width: fit-content !important; 
+  width: fit-content !important;
   padding: 10px 18px !important;
   white-space: nowrap;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  font-family: 'Titillium Web', sans-serif !important;
+  font-family: "Titillium Web", sans-serif !important;
   font-weight: 400 !important;
-  transition: .15s;
+  transition: 0.15s;
 }
 
 div.div-icon:hover {
@@ -47,17 +47,16 @@ div.div-icon:hover .result-status {
   border-top-color: rgba(0, 0, 0, 0.8);
 }
 
-
 .result-status {
   position: absolute;
-    top: 100%;
-    left: 50%;
-    border: 12px solid transparent;
-    border-top: 12px solid white;
-    margin-left: -12px;
-    content: " ";
-    transition: border-color .15s;
-    box-sizing: border-box;
+  top: 100%;
+  left: 50%;
+  border: 12px solid transparent;
+  border-top: 12px solid white;
+  margin-left: -12px;
+  content: " ";
+  transition: border-color 0.15s;
+  box-sizing: border-box;
 }
 
 .marker-popup {
@@ -88,7 +87,7 @@ div.div-icon:hover .result-status {
 }
 
 .leaflet-popup-content {
-  margin: 0;  
+  margin: 0;
 }
 
 .custom-popup-content-thumbnail {
